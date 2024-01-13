@@ -1,9 +1,24 @@
 import { getLocalStorage } from "./utils.mjs";
+// export { cartItems };
+
+const cartCount = window.document.querySelector(".cart");
+// const pruebita = window.document.querySelector(".product-list");
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
+  const cartItems = getLocalStorage("so-cart") || [];
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
+
+  // counter
+  let contador = 0;
+  for (let i = 0; i < cartItems.length; i++) {
+    contador++;
+  }
+
+  let numero = window.document.createElement("p");
+  numero.textContent = `${contador} item added`;
+  cartCount.appendChild(numero);
+
 }
 
 function cartItemTemplate(item) {
