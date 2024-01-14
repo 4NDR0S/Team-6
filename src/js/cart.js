@@ -1,9 +1,15 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage } from './utils.mjs';
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  const cartItems = getLocalStorage('so-cart');
+  let item = [];
+
+  for (let key in cartItems) {
+    item[key] = cartItems[key];
+  }
+
+  const htmlItems = cartItemTemplate(item);
+  document.querySelector('.product-list').innerHTML = htmlItems;
 }
 
 function cartItemTemplate(item) {
