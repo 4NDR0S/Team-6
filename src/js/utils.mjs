@@ -15,7 +15,7 @@ export function setLocalStorage(key, data) {
 }
 
 // helper to get parameter strings
-export function getParam(param) {
+export function getParams(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const product = urlParams.get(param);
